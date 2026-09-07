@@ -1,0 +1,10 @@
+/* Basic styles for demo purpose */
+body{ font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0 }
+header{ background:#003366; color:#fff; padding: 12px }
+header h1{ display:inline-block; margin:0 }
+header nav{ display:inline-block; margin-left: 20px }
+header nav button{ margin-right:8px }
+main{ padding: 16px }
+.products{ width:100%; border-collapse: collapse }
+.products th, .products td{ border:1px solid #ddd; padding:8px }
+.cart{ margin-top:16px; }

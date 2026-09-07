@@ -1,0 +1,21 @@
+{
+  "name": "retail-pos-mvp",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "import:products": "node scripts/import_products.js"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "firebase": "^10.15.0",
+    "firebase-admin": "^11.11.0",
+    "csv-parse": "^5.4.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
