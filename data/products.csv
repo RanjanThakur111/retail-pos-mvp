@@ -1,0 +1,21 @@
+sku,id,name,description,price,cost,qty_on_hand,barcode,image_url,category
+P001,prod-001,Classic White T-Shirt,100% cotton white tee,399.00,150.00,50,8901234560001,,Apparel
+P002,prod-002,Blue Denim Jeans,Slim fit blue jeans,1299.00,600.00,30,8901234560002,,Apparel
+P003,prod-003,Running Shoes,Lightweight running shoes,2499.00,1200.00,20,8901234560003,,Footwear
+P004,prod-004,Leather Wallet,Genuine leather bifold wallet,799.00,300.00,40,8901234560004,,Accessories
+P005,prod-005,Stainless Water Bottle,1L insulated bottle,599.00,200.00,60,8901234560005,,Home
+P006,prod-006,Cotton Socks (Pack of 3),Breathable ankle socks,199.00,50.00,100,8901234560006,,Apparel
+P007,prod-007,Formal Shirt,Oversize formal shirt,999.00,400.00,25,8901234560007,,Apparel
+P008,prod-008,Digital Wristwatch,Water resistant digital watch,1499.00,700.00,15,8901234560008,,Accessories
+P009,prod-009,Desk Lamp,LED desk lamp with dimmer,899.00,350.00,22,8901234560009,,Home
+P010,prod-010,Wireless Mouse,Ergonomic wireless mouse,799.00,250.00,45,8901234560010,,Electronics
+P011,prod-011,USB-C Charger,20W fast charger,499.00,180.00,55,8901234560011,,Electronics
+P012,prod-012,Notebook A5,100-page ruled notebook,149.00,30.00,200,8901234560012,,Stationery
+P013,prod-013,Ballpoint Pen (Blue),Smooth writing pen,29.00,5.00,500,8901234560013,,Stationery
+P014,prod-014,Coffee Mug,Ceramic 350ml mug,249.00,80.00,75,8901234560014,,Home
+P015,prod-015,Phone Case (Black),Silicone protective case,299.00,90.00,80,8901234560015,,Electronics
+P016,prod-016,Face Mask (Pack of 5),Reusable cloth masks,199.00,40.00,150,8901234560016,,Health
+P017,prod-017,Hand Sanitizer 250ml,Alcohol-based sanitizer,179.00,50.00,120,8901234560017,,Health
+P018,prod-018,Backpack (20L),Water-resistant daypack,2199.00,900.00,18,8901234560018,,Bags
+P019,prod-019,Sunglasses,UV-protected sunglasses,999.00,300.00,35,8901234560019,,Accessories
+P020,prod-020,Gift Card - 500,Prepaid gift card worth 500,500.00,0.00,999,8901234560020,,GiftCards
