@@ -1,4 +1,4 @@
-# Retail POS MVP
+ # Retail POS MVP
 
 This repo contains a minimal React + Firebase PWA skeleton for a retail POS MVP.
 
