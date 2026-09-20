@@ -15,10 +15,13 @@ service cloud.firestore {
     }
 
     match /sales/{saleId} {
-      allow create: if signedIn() && request.resource.data.customerUid == request.auth.uid;
+      allow create: if signedIn()
+        && request.resource.data.customerUid == request.auth.uid;
+
       allow read: if signedIn() && (
         request.auth.uid == resource.data.customerUid || isAdmin()
       );
+
       allow update, delete: if isAdmin();
     }
   }

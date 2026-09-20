@@ -1,10 +1,185 @@
-/* Basic styles for demo purpose */
-body{ font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0 }
-header{ background:#003366; color:#fff; padding: 12px }
-header h1{ display:inline-block; margin:0 }
-header nav{ display:inline-block; margin-left: 20px }
-header nav button{ margin-right:8px }
-main{ padding: 16px }
-.products{ width:100%; border-collapse: collapse }
-.products th, .products td{ border:1px solid #ddd; padding:8px }
-.cart{ margin-top:16px; }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f5f6f8;
+  color: #111;
+}
+
+* { box-sizing: border-box; }
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.login-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0d3b66, #1d4e89);
+}
+
+.login-panel {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px;
+  width: min(420px, 90vw);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.login-panel h1 {
+  margin: 0 0 10px;
+}
+
+.google-btn,
+.signout-btn,
+.nav-tabs button,
+.product-form button {
+  cursor: pointer;
+}
+
+.google-btn {
+  background: #4285F4;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+}
+
+.topbar {
+  background: #003366;
+  color: #fff;
+  padding: 12px 16px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.nav-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.nav-tabs button {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
+  padding: 8px 12px;
+}
+
+.nav-tabs button.active {
+  background: #fff;
+  color: #003366;
+}
+
+.user-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.signout-btn {
+  background: #fff;
+  color: #003366;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.alert {
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin: 12px 0;
+}
+
+.alert.error {
+  background: #fdecea;
+  color: #a42828;
+  border: 1px solid #f5c2c7;
+}
+
+.empty-state {
+  background: #fff;
+  border: 1px dashed #bfc9d9;
+  padding: 18px;
+  border-radius: 8px;
+  margin: 16px 0;
+}
+
+.product-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin: 12px 0 20px;
+}
+
+.product-form input {
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+}
+
+.product-form button {
+  padding: 10px 14px;
+  background: #003366;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+}
+
+.products {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.products th,
+.products td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.orders-table th,
+.orders-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 4px solid #cfe0ff;
+  border-top-color: #003366;
+  border-radius: 50%;
+  animation: spin 800ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,58 +1,75 @@
-import React, { useState, useEffect } from 'react'
-import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore'
-import { firebaseApp } from '../firebaseConfig'
+import React, { useState } from 'react';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../firebaseConfig';
 
-const db = getFirestore(firebaseApp)
+export default function Pos({ user }) {
+  const [cart, setCart] = useState([]);
+  const [barcode, setBarcode] = useState('');
 
-export default function Pos(){
-  const [cart, setCart] = useState([])
-  const [barcode, setBarcode] = useState('')
-
-  function addItem(item){
-    setCart(c=>[...c,item])
+  function addItem(item) {
+    setCart((current) => [...current, item]);
   }
 
-  async function createSale(){
+  async function createSale() {
     const sale = {
       created_at: serverTimestamp(),
-      items: cart.map(i=>({ sku: i.sku, name: i.name, price: i.price, qty: 1 })),
-      total: cart.reduce((s,i)=>s + (parseFloat(i.price)||0),0),
-      status: 'completed'
-    }
-    await addDoc(collection(db,'sales'), sale)
-    setCart([])
-    alert('Sale recorded')
+      customerUid: user?.uid || null,
+      customerEmail: user?.email || null,
+      customerDisplayName: user?.displayName || null,
+      items: cart.map((item) => ({
+        sku: item.sku,
+        name: item.name,
+        price: Number(item.price || 0),
+        qty: 1,
+      })),
+      total: cart.reduce((sum, item) => sum + (Number(item.price) || 0), 0),
+      status: 'completed',
+    };
+
+    await addDoc(collection(db, 'sales'), sale);
+    setCart([]);
+    alert('Sale recorded');
   }
 
-  // Quick demo: barcode add will search product from Firestore (very simple)
-  useEffect(()=>{
-    // placeholder for future offline queue init
-  },[])
+  async function handleBarcodeAdd() {
+    const q = await (await import('firebase/firestore')).getDocs(collection(db, 'products'));
+    const docs = q.docs.map((docSnap) => ({ id: docSnap.id, ...docSnap.data() }));
+    const found = docs.find((product) => product.barcode === barcode || product.sku === barcode || product.id === barcode);
+
+    if (!found) {
+      alert('Product not found in this demo');
+      setBarcode('');
+      return;
+    }
+
+    addItem(found);
+    setBarcode('');
+  }
 
   return (
     <div>
       <h2>POS</h2>
       <div className="pos-controls">
-        <input placeholder="Scan barcode or type SKU" value={barcode} onChange={e=>setBarcode(e.target.value)} />
-        <button onClick={async ()=>{
-          // Attempt to find product by sku or barcode
-          const q = await (await import('firebase/firestore')).getDocs(collection(db,'products'))
-          const docs = q.docs.map(d=>({ id: d.id, ...d.data() }))
-          const found = docs.find(p=> p.barcode === barcode || p.sku === barcode || p.id === barcode)
-          if(found) addItem(found)
-          else alert('Product not found in this demo')
-          setBarcode('')
-        }}>Add</button>
+        <input
+          placeholder="Scan barcode or type SKU"
+          value={barcode}
+          onChange={(event) => setBarcode(event.target.value)}
+        />
+        <button onClick={handleBarcodeAdd}>Add</button>
       </div>
 
       <div className="cart">
         <h3>Cart</h3>
         <ul>
-          {cart.map((c,i)=>(<li key={i}>{c.name} — {c.price}</li>))}
+          {cart.map((item, index) => (
+            <li key={`${item.id || item.sku || index}`}>
+              {item.name} — {item.price}
+            </li>
+          ))}
         </ul>
-        <div>Total: {cart.reduce((s,i)=>s + (parseFloat(i.price)||0),0)}</div>
-        <button onClick={createSale} disabled={cart.length===0}>Complete Sale</button>
+        <div>Total: {cart.reduce((sum, item) => sum + (Number(item.price) || 0), 0).toFixed(2)}</div>
+        <button onClick={createSale} disabled={cart.length === 0}>Complete Sale</button>
       </div>
     </div>
-  )
+  );
 }
