@@ -1,13 +1,13 @@
-// Replace the placeholders below with your Firebase config
-import { initializeApp } from 'firebase/app'
+import { initializeApp } from 'firebase/app';
 
 export const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "SENDER_ID",
-  appId: "APP_ID"
-}
+  apiKey: 'AIzaSyD8SxDrvYNtCQ7wS_KEqRXdktqaeZM3igI',
+  authDomain: 'retail-pos-mvp.firebaseapp.com',
+  projectId: 'retail-pos-mvp',
+  storageBucket: 'retail-pos-mvp.firebasestorage.app',
+  messagingSenderId: '840651621617',
+  appId: '1:840651621617:web:064ab5e694b4d3073c5550',
+  measurementId: 'G-SYJQ9WEYLX',
+};
 
-export const firebaseApp = initializeApp(firebaseConfig)
+export const firebaseApp = initializeApp(firebaseConfig);
