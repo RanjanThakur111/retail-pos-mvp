@@ -9,12 +9,12 @@
     "import:products": "node scripts/import_products.js"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "csv-parse": "^5.4.0",
     "firebase": "^10.7.0",
-    "csv-parse": "^5.4.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "vite": "^5.0.0"
+    "vite": "^6.4.3"
   }
 }
