@@ -2,7 +2,7 @@ name: Deploy to Firebase
 
 on:
   push:
-    branches: [main]
+    branches: [main, copilot/fix-google-login-screen]
 
 jobs:
   build-and-deploy:
