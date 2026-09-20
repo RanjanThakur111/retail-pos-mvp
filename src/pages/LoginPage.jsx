@@ -1,42 +1,7 @@
-import React, { useState } from 'react';
-import { signInWithPopup } from 'firebase/auth';
-import { auth, googleProvider } from '../config/firebase';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 import '../styles/LoginPage.css';
 
-const LoginPage = () => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const navigate = useNavigate();
-
-  const handleGoogleSignIn = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      
-      const result = await signInWithPopup(auth, googleProvider);
-      const user = result.user;
-
-      // Log successful login
-      console.log('User logged in:', user.email);
-
-      // Redirect to dashboard after successful login
-      navigate('/dashboard');
-    } catch (err) {
-      console.error('Login error:', err);
-      
-      if (err.code === 'auth/popup-closed-by-user') {
-        setError('Sign-in popup was closed. Please try again.');
-      } else if (err.code === 'auth/network-request-failed') {
-        setError('Network error. Please check your internet connection.');
-      } else {
-        setError(err.message);
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
-
+const LoginPage = ({ onGoogleSignIn, loading, error }) => {
   return (
     <div className="login-container">
       <div className="login-card">
@@ -59,7 +24,7 @@ const LoginPage = () => {
 
           <button
             className="google-signin-btn"
-            onClick={handleGoogleSignIn}
+            onClick={onGoogleSignIn}
             disabled={loading}
           >
             <svg className="google-icon" viewBox="0 0 24 24">
@@ -84,12 +49,8 @@ const LoginPage = () => {
           </button>
 
           <div className="login-footer">
-            <p className="security-notice">
-              🔒 Your login is secure and encrypted
-            </p>
-            <p className="admin-notice">
-              Admin access: ranjan111790@gmail.com
-            </p>
+            <p className="security-notice">🔒 Your login is secure and encrypted</p>
+            <p className="admin-notice">Admin access: ranjan111790@gmail.com</p>
           </div>
         </div>
       </div>
